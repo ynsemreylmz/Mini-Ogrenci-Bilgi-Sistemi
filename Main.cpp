@@ -11,11 +11,11 @@ void MenuGoster() {
 	cout << "*          MENU             * \n";
 	cout << "* * * * * * * * * * * * * * * \n";
 	cout << "*                           * \n";
-	cout << "*  1. Yeni Kayýt Ekle       * \n";
-	cout << "*  2. Tüm Listeyi Göster    * \n";
-	cout << "*  3. ID'ye göre Kayýt Sil  * \n";
+	cout << "*  1. Yeni KayÄ±t Ekle       * \n";
+	cout << "*  2. TÃ¼m Listeyi GÃ¶ster    * \n";
+	cout << "*  3. ID'ye gÃ¶re KayÄ±t Sil  * \n";
 	cout << "*  4. Ogrenci Ara           * \n";
-	cout << "*  5. Çýkýþ Yap             * \n";
+	cout << "*  5. Ã‡Ä±kÄ±ÅŸ Yap             * \n";
 	cout << "*                           * \n";
 	cout << "* * * * * * * * * * * * * * * \n";
 }
@@ -23,21 +23,18 @@ void MenuGoster() {
 
 
 
-void OgrenciEkle(list<Ogrenci>* lst, int* pid) {
+void OgrenciEkle(list<Ogrenci>* lst, int &id ) {
 	setlocale(LC_ALL, "Turkish");
-	*pid = *pid + 1;
+	id = id + 1;
 	int sinavNot;
 	string ad;
-	int id = *pid;
 	char isim[100] = { 0 };
-
 	cout << endl;
-
 	getline(cin, ad);
 	cout << "Ogrenci Ad: ";
 	cin.getline(isim, 100);
 	cout << endl;
-	cout << "Ogrenci Sýnav Not: ";
+	cout << "Ogrenci SÄ±nav Not: ";
 	cin >> sinavNot;
 	cout << endl;
 	ad = isim;
@@ -57,9 +54,9 @@ void ListeyiGoster(list<Ogrenci>* lst) {
 	}
 	cout << endl;
 }
-void KayýtSil(list<Ogrenci>* lst) {
+void KayÄ±tSil(list<Ogrenci>* lst) {
 	int id;
-	cout << "Silinecek öðrencinin ID'sini giriniz: ";
+	cout << "Silinecek Ã¶ÄŸrencinin ID'sini giriniz: ";
 	cin >> id;
 	list<Ogrenci>::iterator it;
 
@@ -71,7 +68,7 @@ void KayýtSil(list<Ogrenci>* lst) {
 	}
 
 	if (it==lst->end()) 
-		cout << "Girdiðiniz ID'ye ait bir öðrenci bulunamadý. \n";
+		cout << "GirdiÄŸiniz ID'ye ait bir Ã¶ÄŸrenci bulunamadÄ±. \n";
 	else
 		lst->erase(it);
 
@@ -79,7 +76,7 @@ void KayýtSil(list<Ogrenci>* lst) {
 
 void OgrenciAra(list<Ogrenci>* lst) {
 	int id;
-	cout << "Aramak istediðiniz öðrenci ID'sini giriniz: ";
+	cout << "Aramak istediÄŸiniz Ã¶ÄŸrenci ID'sini giriniz: ";
 	cin >>id;
 	list<Ogrenci>::iterator it;
 	for ( it = lst->begin();it!=lst->end();it++)
@@ -88,7 +85,7 @@ void OgrenciAra(list<Ogrenci>* lst) {
 			break;
 	}
 	if (it == lst->end())
-		cout << "Aradýðýnýz öðrenci bulunamadý.";
+		cout << "AradÄ±ÄŸÄ±nÄ±z Ã¶ÄŸrenci bulunamadÄ±.";
 	else{ 
 		cout << "------------------------------- \n "; 
 		it->BilgiGetir();
@@ -112,12 +109,12 @@ int main() {
 	do
 	{
 		MenuGoster();
-		cout << "Seçiminizi giriniz: ";
+		cout << "SeÃ§iminizi giriniz: ";
 		cin >> secim;
 		switch (secim)
 		{
 		case(1):
-			OgrenciEkle(ogrenciList,&id);
+			OgrenciEkle(ogrenciList,id);
 			cout << endl;
 			break;
 		case(2):
@@ -125,7 +122,7 @@ int main() {
 			cout << endl;
 			break;
 		case(3):
-			KayýtSil(ogrenciList);
+			KayÄ±tSil(ogrenciList);
 			cout << endl;
 			break;
 		case(4):
@@ -136,7 +133,7 @@ int main() {
 			break;
 		default:
 			cout << endl;
-			cout << "Hatalý seçim yaptýnýz! Tekrar Deneyiniz:\n";
+			cout << "HatalÄ± seÃ§im yaptÄ±nÄ±z! Tekrar Deneyiniz:\n";
 			break;
 		}
 
